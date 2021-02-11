@@ -29,3 +29,27 @@ Exponential time O(2^n): Has run time that grows rapidly with any increase in in
 10. Logarithmic O(log(n)) - The for loop will run that many more times if the n value is higher.
 
 11. 
+
+function calculateMoves(num) {
+  if (num === 3) {
+    return 7;
+  }
+  return calculateMoves(num -1) * 2 + 1;
+}
+
+function printMove(first, last) {
+  console.log(`Move disc from tower ${first} to tower ${last}`);
+}
+
+function hanoi(num, first, last) {
+  if (num === 1) {
+    printMove(first, last);
+  } else {
+    let other = 6 - (first + last);
+    hanoi(num - 1, first, other);
+    printMove(first, last);
+    hanoi(n - 1, other, last);
+  }
+}
+
+hanoi(3, 1, 3)
